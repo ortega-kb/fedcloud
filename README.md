@@ -4,8 +4,6 @@
 **FedCloud** est un projet développé dans le cadre d’un cours de **Cloud Computing** visant à simuler un **cloud fédéré** en utilisant **Java**, **Spring Boot** et une architecture **microservices**.  
 L’objectif est de reproduire un environnement où plusieurs clouds interagissent via un système d’ordonnancement des tâches et de gestion des ressources.
 
----
-
 ## Architecture
 
 L’architecture repose sur 4 composants principaux :
@@ -19,8 +17,6 @@ L’architecture repose sur 4 composants principaux :
 
 ![Architecture FedCloud](assets/FedCloud.drawio.png)
 
----
-
 ## Workflow détaillé
 
 1. **Soumission d’une tâche** – Le client envoie une tâche via l’**API Gateway**.
@@ -29,8 +25,6 @@ L’architecture repose sur 4 composants principaux :
 4. **Exécution de la tâche** – La tâche est transmise au **Cloud Runner** (Cloud A, Cloud B, …) choisi.
 5. **Retour des résultats** – Les résultats sont renvoyés au client via la passerelle.
 
----
-
 ## Technologies utilisées
 
 - **Java 17+**
@@ -38,8 +32,6 @@ L’architecture repose sur 4 composants principaux :
 - **Docker**
 - **Architecture Microservices**
 - **REST API**
-
----
 
 ## 📂 Structure du projet
 
@@ -51,7 +43,6 @@ fedcloud/
 │── cloud-runner/ → Simulation des clouds
 │── docker-compose.yml → Orchestration des services
 ```
----
 
 ## Installation & Lancement
 
