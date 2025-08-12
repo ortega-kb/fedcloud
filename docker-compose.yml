@@ -1,0 +1,97 @@
+services:
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8000:8000"
+    networks:
+      - fedcloud-network
+    environment:
+      - PORT=8000
+      - RESOURCE_MANAGER=http://resource-manager:8002
+      - TASK_MANAGER=http://task-manager:8001
+
+  task-manager:
+    build:
+      context: ./task-manager
+    container_name: task-manager
+    ports:
+      - "8001:8001"
+    networks:
+      - fedcloud-network
+    environment:
+      - SCHEDULING_STRATEGY=cost
+      - PORT=8001
+      - RESOURCE_MANAGER=http://resource-manager:8002
+
+
+  resource-manager:
+    build:
+      context: ./resource-manager
+    container_name: resource-manager
+    ports:
+      - "8002:8002"
+    networks:
+      - fedcloud-network
+    environment:
+      - PORT=8002
+
+  cloud-runner-a:
+    build:
+      context: ./cloud-runner
+    container_name: cloud-runner-a
+    ports:
+      - "8003:8080"
+    networks:
+      - fedcloud-network
+    environment:
+      - CLOUD_NAME=CloudA
+      - CPU=64
+      - MEMORY=2048
+      - COST_PER_SECOND=0.01
+      - SPEED=1.0
+      - PORT=8003
+      - RESOURCE_MANAGER=http://resource-manager:8002
+      - HOST=http://cloud-runner-a:8003
+
+  cloud-runner-b:
+    build:
+      context: ./cloud-runner
+    container_name: cloud-runner-b
+    ports:
+      - "8004:8080"
+    networks:
+      - fedcloud-network
+    environment:
+      - CLOUD_NAME=CloudB
+      - CPU=64
+      - MEMORY=2048
+      - COST_PER_SECOND=0.01
+      - SPEED=1.0
+      - PORT=8004
+      - RESOURCE_MANAGER=http://resource-manager:8002
+      - HOST=http://cloud-runner-b:8004
+
+  cloud-runner-c:
+    build:
+      context: ./cloud-runner
+    container_name: cloud-runner-c
+    ports:
+      - "8005:8080"
+    networks:
+      - fedcloud-network
+    environment:
+      - CLOUD_NAME=CloudC
+      - CPU=64
+      - MEMORY=2048
+      - COST_PER_SECOND=0.01
+      - SPEED=1.0
+      - PORT=8005
+      - RESOURCE_MANAGER=http://resource-manager:8002
+      - HOST=http://cloud-runner-c:8005
+
+networks:
+  fedcloud-network:
+    

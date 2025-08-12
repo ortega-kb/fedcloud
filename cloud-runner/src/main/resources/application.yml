@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: cloud-runner
+
+server:
+  port: ${PORT:8080}
+
+
+cloud-runner:
+  name: ${CLOUD_NAME:CloudA}
+  cpu: ${CPU:64}
+  memory: ${MEMORY:2048}
+  cost: ${COST_PER_SECOND:0.01}
+  speed: ${SPEED:1.0} # lower = best
+  resource-manager: ${RESOURCE_MANAGER:http://localhost:8002}
+  host: ${HOST:http://localhost:8080}
+
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full

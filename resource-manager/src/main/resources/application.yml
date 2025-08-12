@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: resource-manager
+
+server:
+  port: ${PORT:8002}
+

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: task-manager
+
+server:
+  port: ${PORT:8001}
+
+task-manager:
+  scheduling:
+    strategy: ${SCHEDULING_STRATEGY:cost}
+  resource-manager: ${RESOURCE_MANAGER:http://localhost:8002}
